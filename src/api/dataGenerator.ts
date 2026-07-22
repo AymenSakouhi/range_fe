@@ -4,7 +4,8 @@ const SEED = 1337
 const NOW_ANCHOR_MS = Date.UTC(2026, 6, 1)
 const WINDOW_MS = 90 * 24 * 60 * 60 * 1000
 
-const CHAINS: Chain[] = ['ethereum', 'solana', 'osmosis', 'base']
+export const CHAINS: Chain[] = ['ethereum', 'solana', 'osmosis', 'base']
+export const STATUSES: TxStatus[] = ['pending', 'confirmed', 'failed']
 
 const TOKENS_BY_CHAIN: Record<Chain, string[]> = {
   ethereum: ['ETH', 'USDC', 'USDT', 'DAI', 'WBTC'],
@@ -12,6 +13,8 @@ const TOKENS_BY_CHAIN: Record<Chain, string[]> = {
   osmosis: ['OSMO', 'ATOM', 'USDC'],
   base: ['ETH', 'USDC', 'DEGEN']
 }
+
+export const ALL_TOKENS: string[] = Array.from(new Set(Object.values(TOKENS_BY_CHAIN).flat())).sort()
 
 const HEX_CHARS = '0123456789abcdef'
 const BASE58_CHARS =
