@@ -9,7 +9,7 @@ const baseParams: TxQueryParams = {
   pageSize: 20,
   filters: {},
   sortField: 'timestamp',
-  sortDirection: 'desc',
+  sortDirection: 'desc'
 }
 
 describe('runQuery', () => {
@@ -20,18 +20,28 @@ describe('runQuery', () => {
   })
 
   it('filters by chain', () => {
-    const result = runQuery({ ...baseParams, filters: { chain: 'solana' } }, TEST_ROWS)
+    const result = runQuery(
+      { ...baseParams, filters: { chain: 'solana' } },
+      TEST_ROWS
+    )
     expect(result.rows.length).toBeGreaterThan(0)
     expect(result.rows.every((row) => row.chain === 'solana')).toBe(true)
   })
 
   it('sorts by amountUsd descending', () => {
     const result = runQuery(
-      { ...baseParams, pageSize: TEST_ROWS, sortField: 'amountUsd', sortDirection: 'desc' },
-      TEST_ROWS,
+      {
+        ...baseParams,
+        pageSize: TEST_ROWS,
+        sortField: 'amountUsd',
+        sortDirection: 'desc'
+      },
+      TEST_ROWS
     )
     for (let i = 1; i < result.rows.length; i++) {
-      expect(result.rows[i - 1].amountUsd).toBeGreaterThanOrEqual(result.rows[i].amountUsd)
+      expect(result.rows[i - 1].amountUsd).toBeGreaterThanOrEqual(
+        result.rows[i].amountUsd
+      )
     }
   })
 
