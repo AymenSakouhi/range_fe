@@ -5,7 +5,7 @@ function App() {
         <h1 className="text-xl font-semibold">Crypto Transaction Explorer</h1>
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
