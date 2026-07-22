@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import { useTxQueryParams } from './hooks/useTxQueryParams'
 import { useTransactionsQuery } from './hooks/useTransactionsQuery'
 import { FiltersBar } from './components/FiltersBar'
+import { SummaryPanel } from './components/SummaryPanel'
 import { TransactionTable } from './components/TransactionTable'
 import { Pagination } from './components/Pagination'
 import type { SortField, TxFilters } from './types'
@@ -34,6 +35,8 @@ function App() {
       </header>
 
       <FiltersBar filters={params.filters} onFilterChange={handleFilterChange} />
+
+      <SummaryPanel summary={data?.summary} />
 
       {isLoading ? (
         <p className="p-6 text-sm text-slate-500">Loading transactions...</p>
